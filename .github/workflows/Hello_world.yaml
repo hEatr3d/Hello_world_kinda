@@ -2,9 +2,9 @@ name: Lyuboye
 
 on: 
 	pull_request:
-	push:		
+	push:
 		branches: [main]
-		workflow_dispatcher:
+	workflow_dispatcher:
 
 jobs:
 	build:
