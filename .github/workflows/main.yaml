@@ -1,7 +1,6 @@
 name: Lyuboye
 
 on: 
-	pull_request:
 	push:		
 		branches: [main]
 	workflow_dispatcher:
