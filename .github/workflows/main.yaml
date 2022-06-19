@@ -1,0 +1,29 @@
+name: Lyuboye
+
+on:
+	pull_request:
+	push:
+		branches: [main]
+
+jobs:
+	build:
+		runs-on: ubuntu-latest
+		steps:
+				uses: actions/checkout
+			- name: build
+				run: g++ hello.cpp -o hello_world
+			- name: artifacts
+				uses: actions/upload-artifact@v3
+				with:
+					name: artifact
+					path: hello_world
+					retention-days: 7
+			- name: carriage
+				if: ${{ always() }}
+				uses: appleboy/telegram-action@master
+				with:
+					to: ${{ secrets.CHAT_ID }}	
+					token: ${{ secrets.BOT_TOKEN }}
+					message: |
+						${{ github.event_name }}
+						${{ job.status }}
