@@ -30,7 +30,18 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          document: ${{ env.app_name }}_${{ runner.os }}
+
+  tg_msg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: carry_the_msg
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             Congratulations! An event occured in the repository called ${{ github.repository }} . Which means, I'm about to give you a valuable piece of information. Go me!
             ${{ github.event_name }}
-          document: ${{ env.app_name }}_${{ runner.os }}
