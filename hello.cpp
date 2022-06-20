@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 
 using namespace std;
 
@@ -20,7 +19,6 @@ int main()
 
     for (int i = 0; wellHelloWorld[i] != '\0'; i++)
     {
-        Sleep(125);
         if( wellHelloWorld[i] !=  stop[a])
         {
             char print = wellHelloWorld[i] - 32;
@@ -32,7 +30,6 @@ int main()
         {
             for ( ; badassery[c] != cease[b] && badassery[c] != '\0'; c++)
             {
-                Sleep(125);
                 char print = badassery[c];
                 cout << print;
             }
