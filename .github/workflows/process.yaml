@@ -25,6 +25,11 @@ jobs:
           path: ${{ env.app_name }}_${{ runner.os }}
           retention-days: 6
 
+  tg_export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
       - name: carriage
         uses: appleboy/telegram-action@master
         with:
