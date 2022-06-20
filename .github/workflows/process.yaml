@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: build_app
-        run: g++ hello.cpp -o ${{ env.app_name }}_${{ runner.os }}
+        run: g++ hello.cpp -o ${{ env.app_name }}_${{ runner.os }} #something
 
       - name: upload_artifact
         uses: actions/upload-artifact@v3
