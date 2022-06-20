@@ -15,8 +15,8 @@ int main()
 
     char wellHelloWorld[]{ "hello world!" };
     char badassery[]{ " n,ait f it, I wil o it" }; // "(Hell) n(o),( w)ait f(or) it, I wil(l) (d)o it"
-    char stop[]{ 'o', ' ', "old" };
-    char cease[]{ ",a", ' ', ' ', 'o' };
+    char stop[]{ "o old" };
+    char cease[]{ ",a  o" };
 
     for (int i = 0; wellHelloWorld[i] != '\0'; i++)
     {
