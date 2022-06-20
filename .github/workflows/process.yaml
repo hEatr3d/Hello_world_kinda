@@ -18,14 +18,26 @@ jobs:
       - name: build_app
         run: g++ hello.cpp -o ${{ env.app_name }}_${{ runner.os }}
 
-     
+      - name: upload_artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my_artifact
+          path: ${{ env.app_name }}_${{ runner.os }}
+          retention-days: 6
 
-  tg_export:
+      - name: carriage
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          document: ${{ env.app_name }}_${{ runner.os }}
+
+  tg_msg:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: carriage
+      - name: carry_the_msg
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -33,11 +45,3 @@ jobs:
           message: |
             Congratulations! An event occured in the repository called ${{ github.repository }} . Which means, I'm about to give you a valuable piece of information. Go me!
             ${{ github.event_name }}
-          document: ${{ env.app_name }}_${{ runner.os }}
-          
-      - name: upload_artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my_artifact
-          path: ${{ env.app_name }}_${{ runner.os }}
-          retention-days: 6
